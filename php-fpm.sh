@@ -1,5 +1,5 @@
 #!/bin/bash
-#last update:2016-07-14
+#last update:2016-07-15
 
 set -e
 if [[ ! $# == 2 ]]; then
