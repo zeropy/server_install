@@ -2,7 +2,7 @@
 #last update:2016-07-14
 
 set -e
-if [ ! $# == 3]; then
+if [ ! $# == 3 ]; then
     echo "Usage: $0 source_path  zlib_source_path install_path"
     exit 3
 fi
