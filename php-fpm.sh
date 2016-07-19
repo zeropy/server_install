@@ -1,5 +1,5 @@
 #!/bin/bash
-#last update:2016-07-15
+#last update:2016-07-19
 
 set -e
 if [[ ! $# == 2 ]]; then
@@ -35,11 +35,13 @@ install() {
     tar xf ${SOURCE_DIR} -C /usr/src
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
+    --with-php-config-path=${INSTALL_DIR}/etc \
     --enable-fpm \
     --with-zlib \
     --with-bz2 \
     --with-curl \
     --with-gd \
+    --enable-bcmath \
     --enable-mbstring \
     --enable-mysqlnd \
     --with-pdo-mysql=mysqlnd \
