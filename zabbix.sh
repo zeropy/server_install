@@ -51,7 +51,7 @@ install_agent() {
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
     --enable-agent
-
+    make && make install
 }
 
 echo -e 'Please enter the Numbers:\n
