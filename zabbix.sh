@@ -43,16 +43,14 @@ install_server() {
     --with-mysql \
     --with-nt-snmp \
     --with-libxml2 \
-    --with-curl \
-    --with-unixodbc
+    --with-libcurl \
     make && make install
 }
 install_agent() {
     tar xf  ${SOURCE_DIR} -C /usr/src
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
-    --enable-agent \
-    --with-unixodbc
+    --enable-agent  
     make && make install
 }
 
