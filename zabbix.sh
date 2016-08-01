@@ -31,10 +31,10 @@ SOURCE_DIR=$1
 INSTALL_DIR=$2
 
 pre_install() {
-    yum install -y libcurl-devel libxml2-devel net-snmp-devel mariadb-devel mysql-connector-odbc unixODBC unixODBC-devel
-    id zabbix || useradd -s /sbin/nologin -M zabbix
+    yum install -y libcurl-devel libxml2-devel net-snmp-devel mariadb-devel
 }
 install_server() {
+    id zabbix || useradd -s /sbin/nologin -M zabbix
     tar xf ${SOURCE_DIR} -C /usr/src
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
@@ -47,6 +47,7 @@ install_server() {
     make && make install
 }
 install_agent() {
+    id zabbix || useradd -s /sbin/nologin -M zabbix
     tar xf  ${SOURCE_DIR} -C /usr/src
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
