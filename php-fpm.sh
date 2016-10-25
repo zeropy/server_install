@@ -35,7 +35,7 @@ install() {
     tar xf ${SOURCE_DIR} -C /usr/src
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
-    --with-php-config-path=${INSTALL_DIR}/etc \
+    --with-config-file-path=${INSTALL_DIR}/etc \
     --enable-fpm \
     --with-zlib \
     --with-bz2 \
@@ -44,12 +44,14 @@ install() {
     --enable-bcmath \
     --enable-mbstring \
     --enable-mysqlnd \
+    --enable-sockets \
     --with-pdo-mysql=mysqlnd \
     --with-mysqli=mysqlnd \
     --with-freetype-dir \
     --with-jpeg-dir \
     --with-png-dir \
-    --with-zlib-dir
+    --with-zlib-dir \
+    --with-gettext
     make && make install
     cp /usr/src/${DIR}/php.ini-production ${INSTALL_DIR}/etc/php.ini
     cp ${INSTALL_DIR}/etc/php-fpm.conf{.default,}

@@ -32,9 +32,9 @@ INSTALL_DIR=$2
 
 pre_install() {
     yum install -y libcurl-devel libxml2-devel net-snmp-devel mariadb-devel
-    id zabbix || useradd -s /sbin/nologin -M zabbix
 }
 install_server() {
+    id zabbix || useradd -s /sbin/nologin -M zabbix
     tar xf ${SOURCE_DIR} -C /usr/src
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
@@ -43,15 +43,16 @@ install_server() {
     --with-mysql \
     --with-nt-snmp \
     --with-libxml2 \
-    --with-curl 
+    --with-libcurl \
     make && make install
 }
 install_agent() {
+    id zabbix || useradd -s /sbin/nologin -M zabbix
     tar xf  ${SOURCE_DIR} -C /usr/src
     cd /usr/src/${DIR}
     ./configure --prefix=${INSTALL_DIR} \
-    --enable-agent
-
+    --enable-agent  
+    make && make install
 }
 
 echo -e 'Please enter the Numbers:\n

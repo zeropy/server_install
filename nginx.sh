@@ -31,6 +31,7 @@ INSTALL_DIR=$3
 
 install()  {
     yum install -y pcre-devel zlib-devel openssl-devel
+    id nginx || useradd -s /sbin/nologin -M nginx
     tar xf ${SOURCE_DIR} -C /usr/src
     tar xf ${ZLIB_DIR} -C /usr/src
     cd /usr/src/${DIR}
