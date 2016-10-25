@@ -49,7 +49,6 @@ install()  {
     --with-pcre \
     --with-zlib=/usr/src/${ZDIR}
     make && make install
-    ln -s ${INSTALL_DIR}/sbin/nginx /usr/sbin/nginx
     echo 'Install Completed.'
 }
 
